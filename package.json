@@ -1,0 +1,27 @@
+{
+  "name": "clothingbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/Tapendra18/clothingBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tapendra18/clothingBackend/issues"
+  },
+  "homepage": "https://github.com/Tapendra18/clothingBackend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20"
+  }
+}
