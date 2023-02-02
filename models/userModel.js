@@ -39,5 +39,6 @@ userModel.pre("save", async function (next) {
     next();
 });
 
+
 const users = new mongoose.model("signup", userModel);
 module.exports = users;

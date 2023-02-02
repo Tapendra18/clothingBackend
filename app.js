@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/clothingweb');
 //middleware
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 app.use(router)
 
 app.listen(PORT , ()=>{
