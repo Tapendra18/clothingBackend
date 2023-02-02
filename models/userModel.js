@@ -5,12 +5,12 @@ const bcrypt = require("bcryptjs");
 const userModel = new mongoose.Schema({
     fname: {
         type: String,
-        required: [true ,"Enter fname"],
+        required: [true, "Enter fname"],
         trim: true
     },
     email: {
         type: String,
-        required: [true , "Enter email"],
+        required: [true, "Enter email"],
         unique: true,
         validator(value) {
             if (!validator.isEmail(value)) {
@@ -20,19 +20,21 @@ const userModel = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true , "Enter password"],
+        required: [true, "Enter password"],
         minlength: 6
     },
-    cpassword:{
-        type:String,
-        required:true,
-        minlength:6
+    cpassword: {
+        type: String,
+        required: true,
+        minlength: 6
     }
 });
 
 userModel.pre("save", async function (next) {
     if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 12);
+    }if(this.isModified("cpassword")){
+        this.cpassword = await bcrypt.hash(this.cpassword , 12);
     }
     next();
 });
