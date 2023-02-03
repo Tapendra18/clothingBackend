@@ -23,12 +23,6 @@ exports.userregister = async (req, res) => {
                 return res.status(400).json({ error: 'Password and Confirm Password do not match' });
             }
 
-            // const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: '1h' });
-            // res.send({ token });
-
-            const token = jwt.sign({id : userregister } , 'secretKey' , {expiresIn:'1h'})
-            res.send({token});
-
             console.log(userregister, "efsfsrfrerfer");
 
             const storeData = await userregister.save();
@@ -46,15 +40,18 @@ exports.userlogin = async (req, res) => {
     if (!email || !password) {
         res.status(400).json({ error: "Please Enter All Input " });
     }
+    const token = jwt.sign({ email: result.email, id :result._id }, 'secretKey', { expiresIn: '1h' });
 
     try {
-        const user = login.find((u) => u.email === email && u.password === password);
+        const user = login.findOne((u) => u.email === email);
         if (user) {
-            res.status(200).json({ message: "Login success" });
+            jwt.verify(token);
+            // res.status(200).json({ message: "Login success" });
+            res.status(200).send({
+                success:true,
+                data:user,token
+            })
         }
-
-        const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: '1h' });
-        res.send({ token });
 
     } catch (err) {
         res.status(401).send({ err: 'Incorrect username or password' });
