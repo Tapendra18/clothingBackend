@@ -10,6 +10,8 @@ exports.userregister = async (req, res) => {
         res.status(400).json({ error: "Please Enter All Input Data" })
     }
 
+    const token = jwt.sign({ email: result.email, id: result._id }, 'secretKey', { expiresIn: '1h' });
+
     try {
         const presuer = await users.findOne({ email: email });
 
@@ -26,7 +28,7 @@ exports.userregister = async (req, res) => {
             console.log(userregister, "efsfsrfrerfer");
 
             const storeData = await userregister.save();
-            res.status(200).json(storeData);
+            res.status(200).json(storeData , token);
         }
     } catch (error) {
         res.status(400).json({ error: "Invalid Details " + error });
@@ -40,7 +42,7 @@ exports.userlogin = async (req, res) => {
     if (!email || !password) {
         res.status(400).json({ error: "Please Enter All Input " });
     }
-    const token = jwt.sign({ email: result.email, id :result._id }, 'secretKey', { expiresIn: '1h' });
+    const token = jwt.sign({ email: result.email, id: result._id }, 'secretKey', { expiresIn: '1h' });
 
     try {
         const user = login.findOne((u) => u.email === email);
@@ -48,8 +50,8 @@ exports.userlogin = async (req, res) => {
             jwt.verify(token);
             // res.status(200).json({ message: "Login success" });
             res.status(200).send({
-                success:true,
-                data:user,token
+                success: true,
+                data: user, token
             })
         }
 
