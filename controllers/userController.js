@@ -10,8 +10,6 @@ exports.userregister = async (req, res) => {
         res.status(400).json({ error: "Please Enter All Input Data" })
     }
 
-    const token = jwt.sign({ email: result.email, id: result._id }, 'secretKey', { expiresIn: '1h' });
-
     try {
         const presuer = await users.findOne({ email: email });
 
@@ -28,7 +26,7 @@ exports.userregister = async (req, res) => {
             console.log(userregister, "efsfsrfrerfer");
 
             const storeData = await userregister.save();
-            res.status(200).json(storeData , token);
+            res.status(200).json(storeData);
         }
     } catch (error) {
         res.status(400).json({ error: "Invalid Details " + error });
