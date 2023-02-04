@@ -8,7 +8,7 @@ const category = require("../controllers/categoryController");
 const address = require("../controllers/addressController");
 const support = require("../controllers/supportController");
 const discount = require("../controllers/discountController");
-
+const delivery = require("../controllers/deliveryController");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -28,5 +28,7 @@ router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), cat
 router.post("/api/v1/address" , address.addressData);
 router.post("/api/v1/support" , support.supportData);
 router.post("/api/v1/discount" , discount.discountData);
+router.post("/api/v1/delivery" , delivery.discountData)
+
 
 module.exports = router;
