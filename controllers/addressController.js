@@ -2,28 +2,28 @@ const addres = require("../models/addressModel");
 
 const liveController = {};
 
-liveController.addressData = async function (req, res){
+liveController.addressData = async function (req, res) {
 
-    const { name , mobileno , pincode , city , state , address } = req.body;
+    const { name, mobileno, pincode, city, state, address, age, gender } = req.body;
 
-    if( !name || !mobileno || !pincode || !city || !state || !address){
-        res.status(400).json({error:"Please Enter All Input"});
+    if (!name || !mobileno || !pincode || !city || !state || !address || !age || !gender) {
+        res.status(400).json({ error: "Please Enter All Input" });
     }
 
-    try{
+    try {
         const addresss = new addres(req.body);
         await addresss.save();
         console.log(req.body, "addddddddddd")
         return res.status(200).send({
-            success:true,
-            data:addresss
+            success: true,
+            data: addresss
         })
-        
 
-    }catch(err){
+
+    } catch (err) {
         return res.status(500).send({
-            success:false,
-            msg :err + "address not save"
+            success: false,
+            msg: err + "address not save"
         })
     }
 }
