@@ -10,6 +10,14 @@ const Address = new mongoose.Schema({
         required: true,
         minlenth:10
     },
+    age:{
+        type:String,
+        required:true
+    },
+    gender:{
+        type:String,
+        required:true
+    },
     pincode: {
         type: Number,
         required: true,
