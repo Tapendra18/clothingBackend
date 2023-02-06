@@ -27,4 +27,20 @@ liveController.supportData = async function (req ,res){
     }
 }
 
+
+liveController.supportget = async function (req ,res ){
+    try{
+        const supports = await support.find();
+        console.log(supports);
+        return res.status(200).send({
+            success:true,
+            data:supports
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg:err
+        })
+    }
+}
 module.exports = liveController;

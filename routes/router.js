@@ -36,6 +36,7 @@ router.get("/api/v1/address" , address.addressget);
 
 //support
 router.post("/api/v1/support" , support.supportData);
+router.get("/api/v1/support" , support.supportget);
 
 //discount
 router.post("/api/v1/discount" , discount.discountData);
