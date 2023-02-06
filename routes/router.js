@@ -74,5 +74,8 @@ router.post("/api/v1/vehicledocument" ,vehicleDocument.vehicleDocumentData);
 
 //tax
 router.post("/api/v1/tax" , tax.taxData);
+router.get("/api/v1/tax" , tax.taxget);
+router.delete("/api/v1/tax/:_id" , tax.taxDelete);
+router.put("/api/v1/tax/:_id" , tax.taxUpdate);
 
 module.exports = router;
