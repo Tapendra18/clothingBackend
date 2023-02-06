@@ -25,4 +25,20 @@ liveController.categorydata = async function (req, res) {
     }
 }
 
+liveController.categoryget = async function (req, res){
+    try{
+        const category = await categorys.find();
+        return res.status(200).send({
+            success:true,
+            data:category
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg:err
+        })
+    }
+}
+
+
 module.exports = liveController;

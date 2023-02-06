@@ -24,11 +24,23 @@ const upload = multer({storage:storage})
 
 router.post("/user/register"  ,  controllers.userregister);
 router.post("/user/login" , controllers.userlogin);
+
+//category
 router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), category.categorydata);
+router.get("/api/v1/category", category.categoryget);
+
+
+//address
 router.post("/api/v1/address" , address.addressData);
 router.get("/api/v1/address" , address.addressget);
+
+//support
 router.post("/api/v1/support" , support.supportData);
+
+//discount
 router.post("/api/v1/discount" , discount.discountData);
+
+//delivery
 router.post("/api/v1/delivery" , delivery.deliveryData);
 router.get("/api/v1/delivery" , delivery.deliveryShow);
 
