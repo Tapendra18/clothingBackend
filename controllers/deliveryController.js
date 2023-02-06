@@ -20,12 +20,12 @@ liveController.deliveryData = async function(req, res){
 liveController.deliveryShow = async function (req , res){
     try{
 
-        const deliveryss = new delivery(req.body);
-        await deliveryss.find();
-        console.log(deliveryss , "deliverrrr")
+        // const deliveryss = new delivery(req.body);
+        const deliverrrr= await delivery.find();
+        console.log(deliverrrr , "deliverrrr")
         return res.status(200).send({
             success:true,
-            data:deliveryss
+            data:deliverrrr
         }) 
 
     }catch(err){

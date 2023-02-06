@@ -18,4 +18,20 @@ liveController.discountData = async function (req, res) {
     }
 };
 
+liveController.discountget = async function (req, res){
+    try{
+        const discount = await discounts.find();
+        console.log(discount , "dissss");
+        return res.status(200).send({
+            success: true ,
+            data:discount
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg:err
+        })
+    }
+}
+
 module.exports = liveController;

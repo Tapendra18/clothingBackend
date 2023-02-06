@@ -39,6 +39,7 @@ router.post("/api/v1/support" , support.supportData);
 
 //discount
 router.post("/api/v1/discount" , discount.discountData);
+router.get("/api/v1/discount" , discount.discountget);
 
 //delivery
 router.post("/api/v1/delivery" , delivery.deliveryData);
