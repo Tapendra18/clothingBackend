@@ -28,11 +28,13 @@ router.post("/user/login" , controllers.userlogin);
 //category
 router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), category.categorydata);
 router.get("/api/v1/category", category.categoryget);
+router.delete("/api/v1/category/_id", category.categorydelete);
 
 
 //address
 router.post("/api/v1/address" , address.addressData);
 router.get("/api/v1/address" , address.addressget);
+router.delete("/api/v1/address/:_id" , address.addressdelete);
 
 //support
 router.post("/api/v1/support" , support.supportData);

@@ -3,12 +3,6 @@ const support = require("../models/supportModel");
 const liveController = {};
 
 liveController.supportData = async function (req ,res){
-    // const {order , title , content , mobileno} = req.body
-
-    // if(!order || !title || !content ){
-    //     res.status(400).json({error:"Please Enter All Input "});
-
-    // }
 
     try{
         const supports = new support(req.body);

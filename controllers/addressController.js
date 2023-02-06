@@ -1,4 +1,5 @@
 const addres = require("../models/addressModel");
+// const mongo = require("mong")
 
 const liveController = {};
 
@@ -45,6 +46,24 @@ liveController.addressget = async function (req, res) {
         })
     }
   
+}
+
+liveController.addressdelete = async function (req ,res){
+    try{
+        console.log(req.params.id , "deleteeeee");
+        const address = await addres.deleteOne({id: req.params._id});
+        console.log(address , "deletereraddddd");
+        return res.status(200).send({
+            success:true,
+            data:address,
+            msg:"successfully deleted"
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg:err + "error in delete API"
+        })
+    }
 }
 
 module.exports = liveController;

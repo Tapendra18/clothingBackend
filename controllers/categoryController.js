@@ -40,5 +40,23 @@ liveController.categoryget = async function (req, res){
     }
 }
 
+liveController.categorydelete = async function (req ,res) {
+    try{
+        console.log(req.params.id, "delleeett");
+        const category = await categorys.deleteOne({id: req.params._id});
+        console.log(category, "caterrrr");
+        return res.status(200).send({
+            success:true,
+            data:category,
+            msg:"successfully deleted "
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg: err + "error in delete api "
+        })
+    }
+}
+
 
 module.exports = liveController;
