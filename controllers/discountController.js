@@ -20,7 +20,8 @@ liveController.discountData = async function (req, res) {
 
 liveController.discountget = async function (req, res){
     try{
-        const discount = await discounts.find();
+        const discount = await discounts.find({id : req.params._id});
+        console.log(req.params._id , "dasdasd");
         console.log(discount , "dissss");
         return res.status(200).send({
             success: true ,
@@ -47,6 +48,35 @@ liveController.discountDelete = async function(req, res){
         return res.status(500).send({
             success:false,
             msg: err + "error in delete api"
+        })
+    }
+}
+
+liveController.discountUpdate = async function (req ,res){
+    try{
+
+        console.log(req.params._id ,"updaaateee");
+        const discount = await discounts.findOneAndUpdate({id:req.params._id},
+            {$set:{
+            title:req.body.title,
+            code:req.body.code,
+            amount:req.body.amount,
+            valid:req.body.valid
+        }});
+        discount.save();
+        // const discount1 = await discount.updateMany({
+        //     title,code, 
+        // })
+        // const discount = await discounts.updateMany({});
+        return res.status(200).send({
+            success:true,
+            data:discount,
+            msg :"successfully update"
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:true,
+            msg:err + "error in update"
         })
     }
 }

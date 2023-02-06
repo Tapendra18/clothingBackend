@@ -43,8 +43,9 @@ router.delete("/api/v1/support/:_id" , support.supportDelete);
 
 //discount
 router.post("/api/v1/discount" , discount.discountData);
-router.get("/api/v1/discount" , discount.discountget);
+router.get("/api/v1/discount/:_id" , discount.discountget);
 router.delete("/api/v1/discount/:_id" , discount.discountDelete);
+router.put("/api/v1/discount/:_id" , discount.discountUpdate);
 
 //delivery
 router.post("/api/v1/delivery" , delivery.deliveryData);
