@@ -9,6 +9,9 @@ const address = require("../controllers/addressController");
 const support = require("../controllers/supportController");
 const discount = require("../controllers/discountController");
 const delivery = require("../controllers/deliveryController");
+const vehicle = require("../controllers/vehicleController");
+// const { vehicleData  = require("../controllers/vehicleController");
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -55,6 +58,14 @@ router.post("/api/v1/delivery", delivery.deliveryData);
 router.get("/api/v1/delivery", delivery.deliveryShow);
 router.delete("/api/v1/delivery/:_id", delivery.deliverydelete);
 router.put("/api/v1/delivery/:_id", delivery.deliveryUpdate);
+
+
+//vehicle;
+router.post("/api/v1/vehicle", vehicle.vehicleData);
+router.get("/api/v1/vehicle", vehicle.vehicleget);
+router.get("/api/v1/vehicle/:_id", vehicle.vehicleget);
+router.delete("/api/v1/vehicle/:_id", vehicle.vehicleDelete);
+router.put("/api/v1/vehicle/:_id", vehicle.vehicleUpdate);
 
 
 module.exports = router;
