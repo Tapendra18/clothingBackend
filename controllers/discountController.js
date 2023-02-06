@@ -64,10 +64,6 @@ liveController.discountUpdate = async function (req ,res){
             valid:req.body.valid
         }});
         discount.save();
-        // const discount1 = await discount.updateMany({
-        //     title,code, 
-        // })
-        // const discount = await discounts.updateMany({});
         return res.status(200).send({
             success:true,
             data:discount,

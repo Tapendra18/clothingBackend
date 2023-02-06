@@ -19,38 +19,42 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({storage:storage})
+const upload = multer({ storage: storage })
 
 
-router.post("/user/register"  ,  controllers.userregister);
-router.post("/user/login" , controllers.userlogin);
+router.post("/user/register", controllers.userregister);
+router.post("/user/login", controllers.userlogin);
 
 //category
-router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), category.categorydata);
+router.post("/api/v1/category", upload.fields([{ name: "image", maxCount: 1 }]), category.categorydata);
 router.get("/api/v1/category", category.categoryget);
 router.delete("/api/v1/category/:_id", category.categorydelete);
+router.put("/api/v1/category/:_id", category.categoryUpdate);
 
 
 //address
-router.post("/api/v1/address" , address.addressData);
-router.get("/api/v1/address" , address.addressget);
-router.delete("/api/v1/address/:_id" , address.addressdelete);
+router.post("/api/v1/address", address.addressData);
+router.get("/api/v1/address", address.addressget);
+router.delete("/api/v1/address/:_id", address.addressdelete);
+router.put("/api/v1/address/:_id", address.addressUpdate);
 
 //support
-router.post("/api/v1/support" , support.supportData);
-router.get("/api/v1/support" , support.supportget);
-router.delete("/api/v1/support/:_id" , support.supportDelete);
+router.post("/api/v1/support", support.supportData);
+router.get("/api/v1/support", support.supportget);
+router.delete("/api/v1/support/:_id", support.supportDelete);
+router.put("/api/v1/support/:_id", support.supportUpdate);
 
 //discount
-router.post("/api/v1/discount" , discount.discountData);
-router.get("/api/v1/discount/:_id" , discount.discountget);
-router.delete("/api/v1/discount/:_id" , discount.discountDelete);
-router.put("/api/v1/discount/:_id" , discount.discountUpdate);
+router.post("/api/v1/discount", discount.discountData);
+router.get("/api/v1/discount/:_id", discount.discountget);
+router.delete("/api/v1/discount/:_id", discount.discountDelete);
+router.put("/api/v1/discount/:_id", discount.discountUpdate);
 
 //delivery
-router.post("/api/v1/delivery" , delivery.deliveryData);
-router.get("/api/v1/delivery" , delivery.deliveryShow);
-router.delete("/api/v1/delivery/:_id" , delivery.deliverydelete);
+router.post("/api/v1/delivery", delivery.deliveryData);
+router.get("/api/v1/delivery", delivery.deliveryShow);
+router.delete("/api/v1/delivery/:_id", delivery.deliverydelete);
+router.put("/api/v1/delivery/:_id", delivery.deliveryUpdate);
 
 
 module.exports = router;

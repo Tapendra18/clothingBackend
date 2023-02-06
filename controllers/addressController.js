@@ -66,4 +66,33 @@ liveController.addressdelete = async function (req ,res){
     }
 }
 
+liveController.addressUpdate = async function (req , res) {
+    try{
+        const address = await addres.findOneAndUpdate({id:req.params._id} , 
+            {$set:{
+                name:req.body.name,
+                mobileno:req.body.mobileno,
+                age:req.body.age,
+                gender:req.body.gender,
+                pincode:req.body.pincode,
+                city:req.body.city,
+                state:req.body.state,
+                address:req.body.address
+
+        }});
+        address.save();
+        return res.status(200).send({
+            success:true,
+            data:address,
+            msg:"successfully update"
+        })
+
+    }catch(err){
+        return res.status(500).send({
+            success:true,
+            msg: err  + "error in update"
+        })
+    }
+}
+
 module.exports = liveController;
