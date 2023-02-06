@@ -28,7 +28,7 @@ router.post("/user/login" , controllers.userlogin);
 //category
 router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), category.categorydata);
 router.get("/api/v1/category", category.categoryget);
-router.delete("/api/v1/category/_id", category.categorydelete);
+router.delete("/api/v1/category/:_id", category.categorydelete);
 
 
 //address
@@ -39,14 +39,17 @@ router.delete("/api/v1/address/:_id" , address.addressdelete);
 //support
 router.post("/api/v1/support" , support.supportData);
 router.get("/api/v1/support" , support.supportget);
+router.delete("/api/v1/support/:_id" , support.supportDelete);
 
 //discount
 router.post("/api/v1/discount" , discount.discountData);
 router.get("/api/v1/discount" , discount.discountget);
+router.delete("/api/v1/discount/:_id" , discount.discountDelete);
 
 //delivery
 router.post("/api/v1/delivery" , delivery.deliveryData);
 router.get("/api/v1/delivery" , delivery.deliveryShow);
+router.delete("/api/v1/delivery/:_id" , delivery.deliverydelete);
 
 
 module.exports = router;
