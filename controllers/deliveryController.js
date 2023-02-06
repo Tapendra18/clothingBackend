@@ -1,14 +1,33 @@
-const discount = require("../models/DeliveryModel");
+const delivery = require("../models/DeliveryModel");
 const liveController = {};
 
-liveController.discountData = async function(req, res){
+liveController.deliveryData = async function(req, res){
     try{
-        const discounts = new discount(req.body);
-        await discounts.save();
+        const deliverys = new delivery(req.body);
+        await deliverys.save();
         return res.status(200).send({
             success:true,
-            data:discounts
+            data:deliverys
         })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg :err
+        })
+    }
+}
+
+liveController.deliveryShow = async function (req , res){
+    try{
+
+        const deliveryss = new delivery(req.body);
+        await deliveryss.find();
+        console.log(deliveryss , "deliverrrr")
+        return res.status(200).send({
+            success:false,
+            data:deliveryss
+        }) 
+
     }catch(err){
         return res.status(500).send({
             success:false,

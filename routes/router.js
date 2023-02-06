@@ -28,7 +28,8 @@ router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), cat
 router.post("/api/v1/address" , address.addressData);
 router.post("/api/v1/support" , support.supportData);
 router.post("/api/v1/discount" , discount.discountData);
-router.post("/api/v1/delivery" , delivery.discountData)
+router.post("/api/v1/delivery" , delivery.deliveryData);
+router.get("/api/v1/delivery" , delivery.deliveryShow);
 
 
 module.exports = router;
