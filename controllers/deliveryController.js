@@ -24,7 +24,7 @@ liveController.deliveryShow = async function (req , res){
         await deliveryss.find();
         console.log(deliveryss , "deliverrrr")
         return res.status(200).send({
-            success:false,
+            success:true,
             data:deliveryss
         }) 
 

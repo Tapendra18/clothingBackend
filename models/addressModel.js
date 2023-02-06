@@ -8,15 +8,15 @@ const Address = new mongoose.Schema({
     mobileno: {
         type: Number,
         required: true,
-        minlenth:10
+        minlenth: 10
     },
-    age:{
-        type:String,
-        required:true
+    age: {
+        type: String,
+        required: true
     },
-    gender:{
-        type:String,
-        required:true
+    gender: {
+        type: String,
+        required: true
     },
     pincode: {
         type: Number,
@@ -46,4 +46,4 @@ const Address = new mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('addresss' , Address);
+module.exports = mongoose.model('addresss', Address);

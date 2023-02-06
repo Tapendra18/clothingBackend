@@ -26,6 +26,7 @@ router.post("/user/register"  ,  controllers.userregister);
 router.post("/user/login" , controllers.userlogin);
 router.post("/api/v1/category" ,upload.fields([{name:"image", maxCount:1}]), category.categorydata);
 router.post("/api/v1/address" , address.addressData);
+router.get("/api/v1/address" , address.addressget);
 router.post("/api/v1/support" , support.supportData);
 router.post("/api/v1/discount" , discount.discountData);
 router.post("/api/v1/delivery" , delivery.deliveryData);

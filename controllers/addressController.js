@@ -28,4 +28,23 @@ liveController.addressData = async function (req, res) {
     }
 }
 
+liveController.addressget = async function (req, res) {
+    // const address = new addres(req.body);
+    try {
+        const address = await addres.find();
+        return res.status(200).send({
+            success: true,
+            data: address
+        })
+
+
+    } catch(err){
+        return res.status(500).send({
+            success:false,
+            msg:err
+        })
+    }
+  
+}
+
 module.exports = liveController;
