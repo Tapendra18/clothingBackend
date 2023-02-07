@@ -7,11 +7,11 @@ const loginModel = new mongoose.Schema({
         type: String,
         required: [true, "Enter email"],
         unique: true,
-        validator(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error("Not Valid Email")
-            }
-        }
+        // validator(value) {
+        //     if (!validator.isEmail(value)) {
+        //         throw new Error("Not Valid Email")
+        //     }
+        // }
     },
     password:{
         type:String,
@@ -20,4 +20,4 @@ const loginModel = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('login', loginModel);
+module.exports = mongoose.model('signups', loginModel);

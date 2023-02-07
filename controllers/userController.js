@@ -29,6 +29,7 @@ exports.userregister = async (req, res) => {
             const storeData = await userregister
             const token = jwt.sign({ email: storeData.email, id: storeData._id }, SECRET_KEY);
             res.status(201).json({ user: storeData, token: token });
+            userregister.save();
         }
     } catch (error) {
         res.status(400).json({ error: "Invalid Details " + error });
@@ -44,21 +45,24 @@ exports.userlogin = async (req, res) => {
     }
 
     try {
-        const exitinguser = await loginModel.findOne({ email: email });
-        if (!exitinguser) {
+
+        const exitinguser = await loginModel.findOne({email :req.body.email});
+
+        if (exitinguser) {
+            const matchpassword = await bcrypt.compare(password, exitinguser.password);
+
+            if (!matchpassword) {
+                return res.status(400).json({ message: "invalid credential" })
+            }
+
+            const token = jwt.sign({ email: exitinguser.email, id: exitinguser._id }, SECRET_KEY);
+            res.status(201).json({ user: exitinguser, token: token });
+
+        } else {
             res.status(404).json({ error: "user not found" })
         }
-
-        const matchpassword = await bcrypt.compare(password, exitinguser.password)
-
-        if (!matchpassword) {
-            return res.status(400).json({ message: "invalid credential" })
-        }
-
-        const token = jwt.sign({ email: exitinguser.email, id: exitinguser._id }, SECRET_KEY);
-        res.status(201).json({ user: exitinguser, token: token })
-
+        
     } catch (err) {
-        res.status(401).send({ err: 'Incorrect username or password' });
+        res.status(401).send({ err: 'Incorrect email or password' });
     }
 }
