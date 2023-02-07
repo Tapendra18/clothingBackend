@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const SECRET_KEY = "NODESAPI"
 const users = require("../models/userModel");
-const loginModel = require("../models/loginModel");
+// const loginModel = require("../models/loginModel");
 
 exports.userregister = async (req, res) => {
     const { fname, email, password, cpassword } = req.body;
@@ -46,7 +46,7 @@ exports.userlogin = async (req, res) => {
 
     try {
 
-        const exitinguser = await loginModel.findOne({email :req.body.email});
+        const exitinguser = await users.findOne({email :req.body.email});
 
         if (exitinguser) {
             const matchpassword = await bcrypt.compare(password, exitinguser.password);

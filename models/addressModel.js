@@ -41,7 +41,14 @@ const Address = new mongoose.Schema({
         type: String,
         enum: ["Active", "Inactive"],
         default: "Active"
-    },
+    }, 
+    users: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
+        }
+    ]
+
 }, {
     timestamps: true
 });
