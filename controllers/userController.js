@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
-
+const bcrypt = require("bcryptjs");
+const SECRET_KEY = "NODESAPI"
 const users = require("../models/userModel");
-const login = require("../models/loginModel");
+const loginModel = require("../models/loginModel");
 
 exports.userregister = async (req, res) => {
     const { fname, email, password, cpassword } = req.body;
@@ -25,8 +26,9 @@ exports.userregister = async (req, res) => {
 
             console.log(userregister, "efsfsrfrerfer");
 
-            const storeData = await userregister.save();
-            res.status(200).json(storeData);
+            const storeData = await userregister
+            const token = jwt.sign({ email: storeData.email, id: storeData._id }, SECRET_KEY);
+            res.status(201).json({ user: storeData, token: token });
         }
     } catch (error) {
         res.status(400).json({ error: "Invalid Details " + error });
@@ -40,18 +42,21 @@ exports.userlogin = async (req, res) => {
     if (!email || !password) {
         res.status(400).json({ error: "Please Enter All Input " });
     }
-    const token = jwt.sign({ email: result.email, id: result._id }, 'secretKey', { expiresIn: '1h' });
 
     try {
-        const user = login.findOne((u) => u.email === email);
-        if (user) {
-            jwt.verify(token);
-            // res.status(200).json({ message: "Login success" });
-            res.status(200).send({
-                success: true,
-                data: user, token
-            })
+        const exitinguser = await loginModel.findOne({ email: email });
+        if (!exitinguser) {
+            res.status(404).json({ error: "user not found" })
         }
+
+        const matchpassword = await bcrypt.compare(password, exitinguser.password)
+
+        if (!matchpassword) {
+            return res.status(400).json({ message: "invalid credential" })
+        }
+
+        const token = jwt.sign({ email: exitinguser.email, id: exitinguser._id }, SECRET_KEY);
+        res.status(201).json({ user: exitinguser, token: token })
 
     } catch (err) {
         res.status(401).send({ err: 'Incorrect username or password' });

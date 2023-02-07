@@ -26,8 +26,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-router.post("/user/register", controllers.userregister);
-router.post("/user/login", controllers.userlogin);
+router.post("/api/v1/register", controllers.userregister);
+router.post("/api/v1/login", controllers.userlogin);
 
 //category
 router.post("/api/v1/category", upload.fields([{ name: "image", maxCount: 1 }]), category.categorydata);
