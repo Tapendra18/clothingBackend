@@ -5,11 +5,11 @@ const liveController = {};
 
 liveController.categorydata = async function (req, res) {
     try {
-        console.log(req.body, "catererre");
-        console.log(req.files, "filesss");
+        // console.log(req.body, "catererre");
+        // console.log(req.files, "filesss");
 
         if (req.files.image) {
-            req.body.image = req.files.images[0].path
+            req.body.image = req.files.image[0].path
         }
         const category = new categorys(req.body);
         await category.save();

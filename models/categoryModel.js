@@ -10,11 +10,13 @@ const category = new mongoose.Schema({
     content: {
         type: String,
         required: true
-    },
-    slug: {
-        type: String,
-        slug: "title"
-    },
+    }
+    // },
+    // slug: {
+    //     type: String,
+    //     slug: "title"
+    // },
+    ,
     status: {
         type: String,
         enum: ["Active", "Inactive"],
@@ -22,9 +24,10 @@ const category = new mongoose.Schema({
     },
     image:
     {
-        type: String,
-        // required: true
-    },
+        // data: Buffer,
+        // contentType: String
+        type:String
+    }
 }, {
     timestamps: true
 });
