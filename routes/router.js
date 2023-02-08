@@ -16,6 +16,7 @@ const tax = require("../controllers/taxController");
 const vendorReg = require("../controllers/vendorController");
 const order = require("../controllers/orderController");
 const bestSell = require("../controllers/bestsellController");
+const daydeal = require("../controllers/daydealController");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "uploads/");
@@ -72,24 +73,28 @@ router.put("/api/v1/vehicle/:_id", vehicle.vehicleUpdate);
 
 
 //vehicle document
-router.post("/api/v1/vehicledocument" ,vehicleDocument.vehicleDocumentData);
+router.post("/api/v1/vehicledocument", vehicleDocument.vehicleDocumentData);
 
 //tax
-router.post("/api/v1/tax" , tax.taxData);
-router.get("/api/v1/tax" , tax.taxget);
-router.delete("/api/v1/tax/:_id" , tax.taxDelete);
-router.put("/api/v1/tax/:_id" , tax.taxUpdate);
+router.post("/api/v1/tax", tax.taxData);
+router.get("/api/v1/tax", tax.taxget);
+router.delete("/api/v1/tax/:_id", tax.taxDelete);
+router.put("/api/v1/tax/:_id", tax.taxUpdate);
 
 //vendor registor
-router.post("/api/v1/vendorReg" , vendorReg.vendorRegister);
-router.post("/api/v1/vendorlog" , vendorReg.vendorlogin);
+router.post("/api/v1/vendorReg", vendorReg.vendorRegister);
+router.post("/api/v1/vendorlog", vendorReg.vendorlogin);
 
 //order
-router.post("/api/v1/order" , order.order);
+router.post("/api/v1/order", order.order);
 
 //best Sell;
-router.post("/api/v1/bestsell" ,upload.fields([{ name: "bestsell", maxCount: 1 }]), bestSell.bestSellPost);
-router.get("/api/v1/bestsell" , bestSell.bestSellGet);
+router.post("/api/v1/bestsell", upload.fields([{ name: "bestsell", maxCount: 1 }]), bestSell.bestSellPost);
+router.get("/api/v1/bestsell", bestSell.bestSellGet);
 
+
+//daydeal
+router.post("/api/v1/daydeal", upload.fields([{ name: "image", maxCount: 1 }]), daydeal.daydealPost);
+router.get("/api/v1/daydeal", daydeal.bestSellGet);
 
 module.exports = router;
