@@ -15,6 +15,7 @@ const vehicleDocument = require("../controllers/vehicleDocumentController");
 const tax = require("../controllers/taxController");
 const vendorReg = require("../controllers/vendorController");
 const order = require("../controllers/orderController");
+const bestSell = require("../controllers/bestsellController");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "uploads/");
@@ -85,5 +86,10 @@ router.post("/api/v1/vendorlog" , vendorReg.vendorlogin);
 
 //order
 router.post("/api/v1/order" , order.order);
+
+//best Sell;
+router.post("/api/v1/bestsell" ,upload.fields([{ name: "bestsell", maxCount: 1 }]), bestSell.bestSellPost);
+router.get("/api/v1/bestsell" , bestSell.bestSellGet);
+
 
 module.exports = router;
