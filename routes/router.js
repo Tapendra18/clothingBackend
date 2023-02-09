@@ -18,6 +18,8 @@ const order = require("../controllers/orderController");
 const bestSell = require("../controllers/bestsellController");
 const daydeal = require("../controllers/daydealController");
 const banner = require("../controllers/bannerController");
+const topsell = require("../controllers/topsellController");
+
 
 
 const storage = multer.diskStorage({
@@ -105,5 +107,9 @@ router.get("/api/v1/daydeal", daydeal.bestSellGet);
 router.post("/api/v1/banner" ,upload.fields([{ name: "image", maxCount: 1 }]), banner.bannerPost);
 router.get("/api/v1/banner" , banner.bannerGet);
 
+
+//topsell
+router.post("/api/v1/topsell" , upload.fields([{name:"image" , maxCount : 1}]) , topsell.topsellPost);
+router.get("/api/v1/topsell" ,topsell.topsellGet);
 
 module.exports = router;
