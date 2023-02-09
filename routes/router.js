@@ -104,12 +104,12 @@ router.get("/api/v1/daydeal", daydeal.bestSellGet);
 
 
 //banner
-router.post("/api/v1/banner" ,upload.fields([{ name: "image", maxCount: 1 }]), banner.bannerPost);
-router.get("/api/v1/banner" , banner.bannerGet);
+router.post("/api/v1/banner", upload.fields([{ name: "image", maxCount: 1 }]), banner.bannerPost);
+router.get("/api/v1/banner", banner.bannerGet);
 
 
 //topsell
-router.post("/api/v1/topsell" , upload.fields([{name:"image" , maxCount : 1}]) , topsell.topsellPost);
-router.get("/api/v1/topsell" ,topsell.topsellGet);
+router.post("/api/v1/topsell", upload.fields([{ name: "image", maxCount: 1 }]), topsell.topsellPost);
+router.get("/api/v1/topsell", topsell.topsellGet);
 
 module.exports = router;
