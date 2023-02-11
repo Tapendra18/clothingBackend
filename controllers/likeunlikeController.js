@@ -38,6 +38,21 @@ exports.like = async function (req, res) {
 
 }
 
+exports.likeGet = async function(req, res){
+    try{
+       const like =  likes.find();
+        return res.status(200).send({
+            success:true,
+            data:like
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            data:err
+        })
+    }
+}
+
 exports.unlike = async function (req, res) {
     try {
         const id = req.param._id;

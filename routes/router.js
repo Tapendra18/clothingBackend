@@ -130,5 +130,5 @@ router.get("/api/v1/comment" , comment.commentGet);
 //likedislike
 router.post("/api/v1/like" ,likedislike.like );
 router.post("/api/v1/unlike" ,likedislike.unlike );
-
+router.get("/api/v1/like" , likedislike.likeGet);
 module.exports = router;
