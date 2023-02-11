@@ -22,7 +22,7 @@ const topsell = require("../controllers/topsellController");
 const contact = require("../controllers/contactController");
 const blog = require("../controllers/blogController");
 const comment = require("../controllers/commentController");
-
+const likedislike = require("../controllers/likeunlikeController");
 
 
 const storage = multer.diskStorage({
@@ -125,6 +125,10 @@ router.get("/api/v1/blog", blog.blogGet);
 
 //comment
 router.post("/api/v1/comment", comment.commentPost);
-router.get("/api/v1/comment" , comment.commentGet)
+router.get("/api/v1/comment" , comment.commentGet);
+
+//likedislike
+router.post("/api/v1/like" ,likedislike.like );
+router.post("/api/v1/unlike" ,likedislike.unlike );
 
 module.exports = router;
