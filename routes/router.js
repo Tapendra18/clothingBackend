@@ -21,6 +21,9 @@ const banner = require("../controllers/bannerController");
 const topsell = require("../controllers/topsellController");
 const contact = require("../controllers/contactController");
 const blog = require("../controllers/blogController");
+const comment = require("../controllers/commentController");
+
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -117,7 +120,11 @@ router.get("/api/v1/topsell", topsell.topsellGet);
 router.post("/api/v1/contact", contact.contactPost);
 
 //blogs
-router.post("/api/v1/blog" , upload.fields([{name :"image" , maxCount:1}]), blog.blogpost);
-router.get("/api/v1/blog" , blog.blogGet);
+router.post("/api/v1/blog", upload.fields([{ name: "image", maxCount: 1 }]), blog.blogpost);
+router.get("/api/v1/blog", blog.blogGet);
+
+//comment
+router.post("/api/v1/comment", comment.commentPost);
+router.get("/api/v1/comment" , comment.commentGet)
 
 module.exports = router;
