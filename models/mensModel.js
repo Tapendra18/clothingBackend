@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const menModel = new mongoose.Schema({
     image: {
@@ -14,8 +16,12 @@ const menModel = new mongoose.Schema({
         enum: ["Active", "Inactive"],
         default: "Active"
     },
-} ,{
-    timestamps:true
+    slug: {
+        type: String,
+        slug: "title"
+    },
+}, {
+    timestamps: true
 });
 
-module.exports = mongoose.model("mensModels" , menModel);
+module.exports = mongoose.model("mensModels", menModel);
