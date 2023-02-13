@@ -25,6 +25,8 @@ const comment = require("../controllers/commentController");
 const likedislike = require("../controllers/likeunlikeController");
 const vendorstore = require("../controllers/vendorstoreController");
 const feabanner = require("../controllers/feabannerController");
+const mensController = require("../controllers/mensController");
+
 
 
 const storage = multer.diskStorage({
@@ -143,5 +145,10 @@ router.get("/api/v1/vendorstore", vendorstore.vendorstoreGet);
 //feabanner ;
 router.post("/api/v1/feabanner", upload.fields([{ name: "image", maxCount: 1 }]), feabanner.feabannerPost);
 router.get("/api/v1/feabanner", feabanner.feabannerGet);
+
+//mens;
+router.post("/api/v1/mens", upload.fields([{ name: "image", maxCount: 1 }]), mensController.mensModelPost);
+router.get("/api/v1/mens", mensController.mensModelGet);
+
 
 module.exports = router;
