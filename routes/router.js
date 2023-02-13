@@ -23,6 +23,8 @@ const contact = require("../controllers/contactController");
 const blog = require("../controllers/blogController");
 const comment = require("../controllers/commentController");
 const likedislike = require("../controllers/likeunlikeController");
+const vendorstore = require("../controllers/vendorstoreController");
+
 
 
 const storage = multer.diskStorage({
@@ -125,10 +127,17 @@ router.get("/api/v1/blog", blog.blogGet);
 
 //comment
 router.post("/api/v1/comment", comment.commentPost);
-router.get("/api/v1/comment" , comment.commentGet);
+router.get("/api/v1/comment", comment.commentGet);
 
 //likedislike
-router.post("/api/v1/like" ,likedislike.like );
-router.post("/api/v1/unlike" ,likedislike.unlike );
-router.get("/api/v1/like" , likedislike.likeGet);
+router.post("/api/v1/like", likedislike.like);
+router.post("/api/v1/unlike", likedislike.unlike);
+router.get("/api/v1/like", likedislike.likeGet);
+
+
+//vendorstore ;
+router.post("/api/v1/vendorstore", upload.fields([{ name: "image", maxCount: 1 }]), vendorstore.vendorstorePost);
+router.get("/api/v1/vendorstore" , vendorstore.vendorstoreGet);
+
+
 module.exports = router;
