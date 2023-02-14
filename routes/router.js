@@ -28,7 +28,7 @@ const feabanner = require("../controllers/feabannerController");
 const mensController = require("../controllers/mensController");
 const womenController = require("../controllers/womenController");
 const kidData = require("../controllers/kidController");
-
+const womenitemController =  require("../controllers/womenitemController");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -154,9 +154,13 @@ router.get("/api/v1/mens", mensController.mensModelGet);
 
 //women 
 router.post("/api/v1/women", upload.fields([{ name: "image", maxCount: 1 }]), womenController.womenDataPost);
-router.get("/api/v1/women", womenController.womenDataGet);
+router.get("/api/v1/women/:slug", womenController.womenDataGet);
 
 //kid
 router.post("/api/v1/kid", upload.fields([{ name: "image", maxCount: 1 }]), kidData.kidDataPost);
-router.get("/api/v1/kid", kidData.kidDataGet);
+router.get("/api/v1/kid/:slug", kidData.kidDataGet);
+
+//womenitem 
+router.post("/api/v1/womenitem" , upload.fields([{name : "image" , maxCount : 1}]) , womenitemController.womenitemPost);
+router.get("/api/v1/womenitem/:slug" , womenitemController.womenitemGet);
 module.exports = router;
