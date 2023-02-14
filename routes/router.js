@@ -30,7 +30,7 @@ const womenController = require("../controllers/womenController");
 const kidData = require("../controllers/kidController");
 const womenitemController = require("../controllers/womenitemController");
 const womentshirt = require("../controllers/womentshirtController");
-
+const kidtshirt = require("../controllers/kidtshirtController");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -168,6 +168,12 @@ router.get("/api/v1/womenitem/:slug", womenitemController.womenitemGet);
 
 //womentshirt 
 router.post("/api/v1/womentshirt", upload.fields([{ name: "image", maxCount: 1 }]), womentshirt.womentshirtPost);
-router.get("/api/v1/womentshirt", womentshirt.womentshirtGet)
+router.get("/api/v1/womentshirt/:slug", womentshirt.womentshirtGet)
+
+
+//kidtshirt
+router.post("/api/v1/kid/tshirt", upload.fields([{ name: "image", maxCount: 1 }]), kidtshirt.kidtshirtPost);
+router.get("/api/v1/kid/tshirt/:slug", kidtshirt.kidtshirtGet);
+
 
 module.exports = router;
