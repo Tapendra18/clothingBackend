@@ -4,7 +4,7 @@ const path = require('path');
 
 const router = new express.Router();
 const controllers = require("../controllers/userController");
-const category = require("../controllers/categoryController");
+const categoryfeature = require("../controllers/featurecategoryController");
 const address = require("../controllers/addressController");
 const support = require("../controllers/supportController");
 const discount = require("../controllers/discountController");
@@ -25,12 +25,9 @@ const comment = require("../controllers/commentController");
 const likedislike = require("../controllers/likeunlikeController");
 const vendorstore = require("../controllers/vendorstoreController");
 const feabanner = require("../controllers/feabannerController");
-const mensController = require("../controllers/mensController");
-const womenController = require("../controllers/womenController");
-const kidData = require("../controllers/kidController");
-const womenitemController = require("../controllers/womenitemController");
-const womentshirt = require("../controllers/womentshirtController");
-const kidtshirt = require("../controllers/kidtshirtController");
+const category = require("../controllers/categoryController");
+const subcategory = require("../controllers/subcategoryController");
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -47,11 +44,11 @@ const upload = multer({ storage: storage })
 router.post("/api/v1/register", controllers.userregister);
 router.post("/api/v1/login", controllers.userlogin);
 
-//category
-router.post("/api/v1/category", upload.fields([{ name: "image", maxCount: 1 }]), category.categorydata);
-router.get("/api/v1/category", category.categoryget);
-router.delete("/api/v1/category/:_id", category.categorydelete);
-router.put("/api/v1/category/:_id", category.categoryUpdate);
+//categoryfeatures
+router.post("/api/v1/categoryfeature", upload.fields([{ name: "image", maxCount: 1 }]), categoryfeature.categorydata);
+router.get("/api/v1/categoryfeature", categoryfeature.categoryget);
+router.delete("/api/v1/categoryfeature/:_id", categoryfeature.categorydelete);
+router.put("/api/v1/categoryfeature/:_id", categoryfeature.categoryUpdate);
 
 
 //address
@@ -149,31 +146,13 @@ router.get("/api/v1/vendorstore", vendorstore.vendorstoreGet);
 router.post("/api/v1/feabanner", upload.fields([{ name: "image", maxCount: 1 }]), feabanner.feabannerPost);
 router.get("/api/v1/feabanner", feabanner.feabannerGet);
 
-//mens;
-router.post("/api/v1/mens", upload.fields([{ name: "image", maxCount: 1 }]), mensController.mensModelPost);
-router.get("/api/v1/mens", mensController.mensModelGet);
+//category
+router.post("/api/v1/category" ,  category.categoryPost);
+router.get("/api/v1/category" , category.categoryGet);
 
 
-//women 
-router.post("/api/v1/women", upload.fields([{ name: "image", maxCount: 1 }]), womenController.womenDataPost);
-router.get("/api/v1/women/:slug", womenController.womenDataGet);
-
-//kid
-router.post("/api/v1/kid", upload.fields([{ name: "image", maxCount: 1 }]), kidData.kidDataPost);
-router.get("/api/v1/kid/:slug", kidData.kidDataGet);
-
-//womenitem 
-router.post("/api/v1/womenitem", upload.fields([{ name: "image", maxCount: 1 }]), womenitemController.womenitemPost);
-router.get("/api/v1/womenitem/:slug", womenitemController.womenitemGet);
-
-//womentshirt 
-router.post("/api/v1/womentshirt", upload.fields([{ name: "image", maxCount: 1 }]), womentshirt.womentshirtPost);
-router.get("/api/v1/womentshirt/:slug", womentshirt.womentshirtGet)
-
-
-//kidtshirt
-router.post("/api/v1/kid/tshirt", upload.fields([{ name: "image", maxCount: 1 }]), kidtshirt.kidtshirtPost);
-router.get("/api/v1/kid/tshirt/:slug", kidtshirt.kidtshirtGet);
-
+//subcategory
+router.post("/api/v1/subcategory" , upload.fields([{name :"image" , maxCount : 1}]) , subcategory.subcategoryPost);
+router.get("/api/v1/subcategory" , subcategory.subcategoryGet);
 
 module.exports = router;
