@@ -21,7 +21,7 @@ liveController.categoryGet = async function (req ,res ){
     try{
         const categorys = await category.find();
         return res.status(200).send({
-            success : false,
+            success : true,
             data: categorys
         })
     }catch(err){

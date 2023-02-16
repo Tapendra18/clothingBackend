@@ -2,13 +2,15 @@ const mongoose = require("mongoose");
 const slug = require("mongoose-slug-generator");
 mongoose.plugin(slug);
 
-
-const category = new mongoose.Schema({
+const homesidebar = new mongoose.Schema({
     title: {
         type: String,
         required: true
     },
-
+    image: {
+        type: String,
+        required: true
+    },
     slug: {
         type: String,
         slug: "title"
@@ -22,4 +24,4 @@ const category = new mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('catetorycloths', category);
+module.exports = mongoose.model("homesidebars" , homesidebar);

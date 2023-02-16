@@ -27,6 +27,8 @@ const vendorstore = require("../controllers/vendorstoreController");
 const feabanner = require("../controllers/feabannerController");
 const category = require("../controllers/categoryController");
 const subcategory = require("../controllers/subcategoryController");
+const homesidebar  = require("../controllers/homesidebarController");
+
 
 
 const storage = multer.diskStorage({
@@ -147,12 +149,16 @@ router.post("/api/v1/feabanner", upload.fields([{ name: "image", maxCount: 1 }])
 router.get("/api/v1/feabanner", feabanner.feabannerGet);
 
 //category
-router.post("/api/v1/category" ,  category.categoryPost);
-router.get("/api/v1/category" , category.categoryGet);
+router.post("/api/v1/category", category.categoryPost);
+router.get("/api/v1/category", category.categoryGet);
 
 
 //subcategory
-router.post("/api/v1/subcategory" , upload.fields([{name :"image" , maxCount : 1}]) , subcategory.subcategoryPost);
-router.get("/api/v1/subcategory" , subcategory.subcategoryGet);
+router.post("/api/v1/subcategory", upload.fields([{ name: "image", maxCount: 1 }]), subcategory.subcategoryPost);
+router.get("/api/v1/subcategory", subcategory.subcategoryGet);
+
+//homesidebar 
+router.post("/api/v1/homesidebar" , upload.fields([{ name: "image", maxCount: 1 }]), homesidebar.homesidebarPost)
+router.get("/api/v1/homesidebar" ,homesidebar.homesidebarGet);
 
 module.exports = router;
