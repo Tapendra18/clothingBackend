@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const support = new mongoose.Schema({
   order: {
@@ -27,7 +29,12 @@ const support = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "user"
     }
-  ]
+  ],
+  slug: {
+    type: String,
+    slug: "title"
+}
+  
 }, {
   timestamps: true
 });

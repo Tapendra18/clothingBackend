@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 
 const contact = new mongoose.Schema({
@@ -35,7 +37,11 @@ const contact = new mongoose.Schema({
         type: String,
         enum: ["Active", "Inactive"],
         default: "Active"
-    }
+    },
+    slug: {
+        type: String,
+        slug: "title"
+    },
 }, {
     timestamps: true
 });

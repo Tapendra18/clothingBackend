@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const Address = new mongoose.Schema({
     name: {
@@ -42,12 +44,10 @@ const Address = new mongoose.Schema({
         enum: ["Active", "Inactive"],
         default: "Active"
     }, 
-    users: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "user"
-        }
-    ]
+    slug: {
+        type: String,
+        slug: "title"
+    },
 
 }, {
     timestamps: true

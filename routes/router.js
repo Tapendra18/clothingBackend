@@ -28,7 +28,7 @@ const feabanner = require("../controllers/feabannerController");
 const category = require("../controllers/categoryController");
 const subcategory = require("../controllers/subcategoryController");
 const homesidebar  = require("../controllers/homesidebarController");
-
+const supplier = require("../controllers/supplierController");
 
 
 const storage = multer.diskStorage({
@@ -160,5 +160,10 @@ router.get("/api/v1/subcategory", subcategory.subcategoryGet);
 //homesidebar 
 router.post("/api/v1/homesidebar" , upload.fields([{ name: "image", maxCount: 1 }]), homesidebar.homesidebarPost)
 router.get("/api/v1/homesidebar" ,homesidebar.homesidebarGet);
+
+
+//supplier
+router.post("/api/v1/supplier", upload.fields([{ name: "image", maxCount: 1 }]) , supplier.supplierPost);
+router.get("/api/v1/supplier" , supplier.supplierGet);
 
 module.exports = router;

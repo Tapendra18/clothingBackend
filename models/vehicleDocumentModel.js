@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const vehicleDocument = new mongoose.Schema({
     
@@ -15,6 +17,10 @@ const vehicleDocument = new mongoose.Schema({
         type: String,
         enum: ["Active", "Inactive"],
         default: "Active"
+    },
+    slug: {
+        type: String,
+        slug: "title"
     }
 });
 

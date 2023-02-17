@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const order = new mongoose.Schema({
     price: {
@@ -49,7 +51,11 @@ const order = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "address"
         }
-    ]
+    ],
+    slug: {
+        type: String,
+        slug: "title"
+    }
 }, {
     timestamps: true
 });

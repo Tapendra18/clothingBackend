@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 // const address = require("../models/addressModel");
 
 const userModel = new mongoose.Schema({
@@ -28,6 +30,10 @@ const userModel = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
+    },
+    slug: {
+        type: String,
+        slug: "title"
     }
 });
 

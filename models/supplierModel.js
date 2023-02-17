@@ -2,38 +2,28 @@ const mongoose = require("mongoose");
 const slug = require("mongoose-slug-generator");
 mongoose.plugin(slug);
 
-const vendorstore = new mongoose.Schema({
+const supplier = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: true
     },
-    year: {
-        type: Number,
-        required: true
-    },
-    company: {
+    slug: {
         type: String,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    contact: {
-        type: String,
-        required: true
+        slug: "title"
     },
     status: {
         type: String,
         enum: ["Active", "Inactive"],
         default: "Active"
-    },
-    slug: {
-        type: String,
-        slug: "title"
     }
 }, {
     timestamps: true
-})
+}
 
-module.exports = mongoose.model("vendorStores", vendorstore);
+);
+
+module.exports = mongoose.model("suppliers", supplier);

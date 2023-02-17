@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const subcategory = new mongoose.Schema({
     // title: {
@@ -86,7 +88,11 @@ const subcategory = new mongoose.Schema({
                     default: "Active"
                 }
             }
-        ]
+        ],
+        slug: {
+            type: String,
+            slug: "title"
+        }
 
 }, {
     timestamps: true
