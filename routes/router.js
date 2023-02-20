@@ -30,6 +30,7 @@ const subcategory = require("../controllers/subcategoryController");
 const homesidebar = require("../controllers/homesidebarController");
 const supplier = require("../controllers/supplierController");
 const trending = require("../controllers/trendingController");
+const recentlyadded = require("../controllers/recentlyaddedController");
 
 
 
@@ -172,5 +173,10 @@ router.get("/api/v1/supplier", supplier.supplierGet);
 //trending 
 router.post("/api/v1/trending", upload.fields([{ name: "image", maxCount: 1 }]), trending.trendingPost);
 router.get("api/v1/trending", trending.trendingGet);
+
+
+//recently added 
+router.post("api/v1/recently", upload.fields([{ name: "image", maxCount: 1 }]), recentlyadded.recentlyaddedPost);
+router.get("api/v1/recently" ,recentlyadded.recentlyaddedGet);
 
 module.exports = router;
