@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost:27017/clothingweb');
 //middleware
 
 app.use(express.json());
-app.use(cors({credentials: true, origin: true}));
+app.use(cors({credentials: true, origin: "*"}));
 app.use(router)
 app.use('/uploads', express.static(path.join("uploads")));
 

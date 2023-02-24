@@ -177,6 +177,6 @@ router.get("api/v1/trending", trending.trendingGet);
 
 //recently added 
 router.post("api/v1/recently", upload.fields([{ name: "image", maxCount: 1 }]), recentlyadded.recentlyaddedPost);
-router.get("api/v1/recently" ,recentlyadded.recentlyaddedGet);
+router.get("api/v1/recently", recentlyadded.recentlyaddedGet);
 
 module.exports = router;

@@ -24,12 +24,12 @@ liveController.recentlyaddedPost = async function (req, res) {
 liveController.recentlyaddedGet = async function(req , res ){
     try{
         const recentlyaddeds = await recentlyadded.find();
-        return res.status(200),send({
+        return res.status(200).send({
             success: true,
             data : recentlyaddeds
         })
     }catch(err){
-        returnres.status(500).send({
+        return res.status(500).send({
             success : false,
             data : err
         })
