@@ -31,6 +31,7 @@ const homesidebar = require("../controllers/homesidebarController");
 const supplier = require("../controllers/supplierController");
 const trending = require("../controllers/trendingController");
 const recentlyadded = require("../controllers/recentlyaddedController");
+const productController = require("../controllers/productController");
 
 
 
@@ -157,7 +158,7 @@ router.get("/api/v1/category", category.categoryGet);
 
 
 //subcategory
-router.post("/api/v1/subcategory", upload.fields([{ name: "image", maxCount: 1 }]), subcategory.subcategoryPost);
+router.post("/api/v1/subcategory", upload.fields([{ name: "thumbnail", maxCount: 1 }]), subcategory.subcategoryPost);
 router.get("/api/v1/subcategory", subcategory.subcategoryGet);
 
 //homesidebar 
@@ -178,5 +179,10 @@ router.get("api/v1/trending", trending.trendingGet);
 //recently added 
 router.post("api/v1/recently", upload.fields([{ name: "image", maxCount: 1 }]), recentlyadded.recentlyaddedPost);
 router.get("api/v1/recently", recentlyadded.recentlyaddedGet);
+
+
+//product 
+router.post("/api/v1/product" , upload.fields([{ name: "product", maxCount: 1 }]), productController.productPost);
+router.get("/api/v1/product" , productController.productGet);
 
 module.exports = router;
