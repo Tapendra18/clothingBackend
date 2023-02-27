@@ -3,7 +3,7 @@ const slug = require("mongoose-slug-generator");
 mongoose.plugin(slug);
 
 const subcategory = new mongoose.Schema({
-    category:
+    categoryId:
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "category"
