@@ -23,9 +23,6 @@ exports.userregister = async (req, res) => {
             if (password !== cpassword) {
                 return res.status(400).json({ error: 'Password and Confirm Password do not match' });
             }
-
-            console.log(userregister, "efsfsrfrerfer");
-
             const storeData = await userregister
             const token = jwt.sign({ email: storeData.email, id: storeData._id }, SECRET_KEY);
             res.status(201).json({ user: storeData, token: token });

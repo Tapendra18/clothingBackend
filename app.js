@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const router = require("./routes/router");
 const path = require('path');
 
-mongoose.connect('mongodb://localhost:27017/clothingweb');
+mongoose.connect('mongodb+srv://Tapendra:NYX2lwUCgqVufFfW@cluster0.rgm2j1z.mongodb.net/');
 
 
 //middleware
