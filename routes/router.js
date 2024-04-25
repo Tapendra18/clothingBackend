@@ -109,6 +109,7 @@ router.post("/api/v1/order", order.order);
 //best Sell;
 router.post("/api/v1/bestsell", upload.fields([{ name: "bestsell", maxCount: 1 }]), bestSell.bestSellPost);
 router.get("/api/v1/bestsell", bestSell.bestSellGet);
+router.get("/api/v1/productdetail/:_id", bestSell.bestSellGetSlug);
 
 
 //daydeal

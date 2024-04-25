@@ -36,4 +36,19 @@ liveController.bestSellGet = async function (req, res){
     }
 }
 
+liveController.bestSellGetSlug = async function (req, res){
+    try{
+        const bestSellers = await bestSell.findOne({_id : req.params._id});
+        return res.status(200).send({
+            success: true ,
+            data:bestSellers
+        })
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            msg:err
+        })
+    }
+}
+
 module.exports = liveController;
