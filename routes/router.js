@@ -32,6 +32,7 @@ const supplier = require("../controllers/supplierController");
 const trending = require("../controllers/trendingController");
 const recentlyadded = require("../controllers/recentlyaddedController");
 const productController = require("../controllers/productController");
+const todosController = require("../controllers/TodoController");
 
 
 
@@ -185,5 +186,9 @@ router.get("api/v1/recently", recentlyadded.recentlyaddedGet);
 //product 
 router.post("/api/v1/product" , upload.fields([{ name: "product", maxCount: 1 }]), productController.productPost);
 router.get("/api/v1/product" , productController.productGet);
+
+// todo 
+router.post("/api/v1/todoadd" , todosController.todoPost );
+router.get("/api/v1/todoget" , todosController.todoGet);
 
 module.exports = router;
