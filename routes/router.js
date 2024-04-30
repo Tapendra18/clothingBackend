@@ -190,5 +190,7 @@ router.get("/api/v1/product" , productController.productGet);
 // todo 
 router.post("/api/v1/todoadd" , todosController.todoPost );
 router.get("/api/v1/todoget" , todosController.todoGet);
+router.delete("/api/v1/tododelete/:_id" , todosController.todoRemove);
+router.put("/api/v1/todoupdate/:_id" , todosController.todoUpdate)
 
 module.exports = router;
