@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const router = require("./routes/router");
 const path = require('path');
 
-mongoose.connect('mongodb+srv://Tapendra:NYX2lwUCgqVufFfW@cluster0.rgm2j1z.mongodb.net/' , { useNewUrlParser: true, useUnifiedTopology: false });
+mongoose.connect('mongodb+srv://Tapendra:wo5EsQ4UbVTbHI9G@cluster0.rgm2j1z.mongodb.net/text' , { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 //middleware

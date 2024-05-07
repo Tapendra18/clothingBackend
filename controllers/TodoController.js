@@ -46,9 +46,7 @@ liveController.todoRemove = async function (req, res) {
 };
 
 liveController.todoUpdate = async function (req, res) {
-  console.log(req.body , "outttttttt")
   try {
-    console.log(req.body , "outer");
     const todos = await todo.findByIdAndUpdate(
       { _id: req.params._id },
       {
@@ -59,7 +57,6 @@ liveController.todoUpdate = async function (req, res) {
       }
     );
     await todos.save();
-    console.log(req.body , "inner");
     return res.status(200).send({
       success: true,
       data: todos,
